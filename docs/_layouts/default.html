@@ -30,7 +30,8 @@
               <p>{{ section.title }}</p>
               <ul>
                 {% for item in section.docs %}
-                <li><a href="{{ item.url }}" alt="{{ item.title }}">{{ item.title }}</a></li>
+                {% assign prefix = item.url  | slice: 0 %}
+                <li><a href="{% if prefix == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}" alt="{{ item.title }}">{{ item.title }}</a></li>
                 {% endfor %}
               </ul>
             </li>
